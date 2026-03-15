@@ -1,0 +1,92 @@
+#!/bin/bash
+# ======================================================================
+#   MASTERS SYSTEM M@☆ — STEALTH INSTALLER (VIP 2026 EDITION)
+# ======================================================================
+clear
+echo -e "\e[1;36m[+] Initializing M@☆ MASTERS Setup...\e[0m"
+
+# ---------------------------------------------------
+# 0. Request Storage Access
+# ---------------------------------------------------
+echo -e "\e[1;33m[!] Please allow storage permissions if prompted...\e[0m"
+termux-setup-storage
+sleep 2
+
+# ---------------------------------------------------
+# 1. Install Dependencies & Repos quietly
+# ---------------------------------------------------
+echo -e "\e[1;36m[+] Installing core dependencies (This may take a moment)...\e[0m"
+pkg update -y && pkg upgrade -y > /dev/null 2>&1
+pkg install -y bash coreutils python ruby git curl wget nano termux-api ncurses-utils openssl-tool figlet cmatrix chafa jq gnupg > /dev/null 2>&1
+
+echo -e "\e[1;36m[+] Configuring Ruby & Python modules...\e[0m"
+gem install lolcat > /dev/null 2>&1
+python -m pip install --upgrade pip setuptools wheel > /dev/null 2>&1
+python -m pip install aiohttp requests dnspython tqdm termcolor colorama nuitka > /dev/null 2>&1
+
+# ---------------------------------------------------
+# 2. Build the MASTERS Directories
+# ---------------------------------------------------
+echo -e "\e[1;36m[+] Building MASTERS directory structure...\e[0m"
+mkdir -p /storage/emulated/0/MASTERS/M-AT-STAR
+mkdir -p /storage/emulated/0/MASTERS/MASTERS_Tech
+mkdir -p /storage/emulated/0/MASTERS/WTk
+mkdir -p /storage/emulated/0/MASTERS/Tk_Master
+
+touch /storage/emulated/0/MASTERS/.runmap.txt
+touch ~/.masters_aliases
+
+# ---------------------------------------------------
+# 3. Download and Decode VIP System Files
+# ---------------------------------------------------
+echo -e "\e[1;36m[+] Pulling Encrypted Vaults from SV Repo...\e[0m"
+
+# Decode the Password File
+curl -sL "https://raw.githubusercontent.com/M-AT-STAR/SV/main/connectvdata.b64" > ~/.connectvdata
+
+# Decode the Matrix Animation
+curl -sL "https://raw.githubusercontent.com/M-AT-STAR/SV/main/matrix.b64" | base64 -d > ~/matrix_tk.sh
+chmod +x ~/matrix_tk.sh
+
+# Decode the Secure Gate
+curl -sL "https://raw.githubusercontent.com/M-AT-STAR/SV/main/gate.b64" | base64 -d > ~/.masters_gate
+chmod +x ~/.masters_gate
+
+# Decode the Main Engine Vault
+curl -sL "https://raw.githubusercontent.com/M-AT-STAR/SV/main/sv_engine.b64" | base64 -d > ~/termux.gpg
+
+# ---------------------------------------------------
+# 4. Handle ~/.bashrc respectfully (From your classic script!)
+# ---------------------------------------------------
+echo -e "\e[1;36m[+] Securing Termux Entrance...\e[0m"
+BASHRC="$HOME/.bashrc"
+LOADER='[ -f "$HOME/.masters_gate" ] && source "$HOME/.masters_gate"'
+
+if [ ! -f "$BASHRC" ]; then
+    { echo "$LOADER"; echo; } > "$BASHRC"
+else
+    if grep -Fxq "$LOADER" "$BASHRC"; then
+        TMP_BRC="$(mktemp)"
+        grep -vxF "$LOADER" "$BASHRC" > "$TMP_BRC"
+        { echo "$LOADER"; echo; cat "$TMP_BRC"; } > "$BASHRC"
+        rm -f "$TMP_BRC"
+    else
+        TMP_BRC="$(mktemp)"
+        cp "$BASHRC" "$TMP_BRC"
+        { echo "$LOADER"; echo; cat "$TMP_BRC"; } > "$BASHRC"
+        rm -f "$TMP_BRC"
+    fi
+fi
+
+# ---------------------------------------------------
+# 5. Final clean message
+# ---------------------------------------------------
+clear
+echo -e "\e[1;32m🎯 MASTERS SYSTEM M@☆ installed.\e[0m"
+echo ""
+echo -e "\e[1;33mᴘᴀssᴡᴏʀᴅ: 0\e[0m"
+echo ""
+echo -e "\e[1;31m🅴🆇🅸🆃 & 🅾🅿🅴🅽 🆃🅴🆁🅼🆄🆇 🅰🅶🅰🅸🅽\e[0m"
+
+exit 0
+
