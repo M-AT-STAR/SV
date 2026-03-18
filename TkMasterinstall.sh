@@ -1,4 +1,4 @@
-#!/bin/bash # Tk Master Baby Aight 🌬💙💨 @MastersTechSolutions IT'S ALL LOVE❤️OTF❤️
+#!/bin/bash # Tk Master Baby Aight 🌬💙💨 @MastersTechSolutions IT'S ALL LOVE❤️OTF❤️.
 clear
 echo -e "\e[1;34m===========================================\e[0m"
 echo -e "\e[1;36m     MASTERS M@☆ SYSTEM INSTALLER          \e[0m"
