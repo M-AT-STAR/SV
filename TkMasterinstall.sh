@@ -1,12 +1,17 @@
 #!/bin/bash
 clear
 echo -e "\e[1;34m===========================================\e[0m"
-echo -e "\e[1;36m      M@☆ SYSTEM INSTALLER LOCKED          \e[0m"
+echo -e "\e[1;36m     MASTERS M@☆ SYSTEM INSTALLER          \e[0m"
 echo -e "\e[1;34m===========================================\e[0m"
 echo ""
 
+echo -e "\e[1;34m===========================================\e>
+echo -e "\e[1;36m     SECURED BY [MSPY] PIN: 2026          \e>
+echo -e "\e[1;34m===========================================\e>
+echo ""
+
 # THE FIX: </dev/tty forces it to listen to the keyboard instead of the curl pipe!
-read -s -p $'\e[1;33mEnter VIP Install PIN: \e[0m' PIN </dev/tty
+read -s -p $'\e[1;33mEnter Install PIN: \e[0m' PIN </dev/tty
 echo ""
 
 _tmp=$(mktemp)
