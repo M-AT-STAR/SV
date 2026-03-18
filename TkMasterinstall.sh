@@ -2,12 +2,8 @@
 clear
 echo -e "\e[1;34m===========================================\e[0m"
 echo -e "\e[1;36m     MASTERS M@☆ SYSTEM INSTALLER          \e[0m"
+echo -e "\e[1;36m     SECURED BY [MSPY] PIN:2026          \e[0m"
 echo -e "\e[1;34m===========================================\e[0m"
-echo ""
-
-echo -e "\e[1;34m===========================================\e>
-echo -e "\e[1;36m     SECURED BY [MSPY] PIN: 2026          \e>
-echo -e "\e[1;34m===========================================\e>
 echo ""
 
 # THE FIX: </dev/tty forces it to listen to the keyboard instead of the curl pipe!
