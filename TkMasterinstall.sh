@@ -5,6 +5,10 @@ echo -e "\e[1;36m     MASTERS M@☆ SYSTEM INSTALLER          \e[0m"
 echo -e "\e[1;36m     SECURED BY [MSPY] ENGINE              \e[0m"
 echo -e "\e[1;34m===========================================\e[0m"
 echo ""
+
+# THE FIX: Silent pre-flight check for fresh Termux installs
+command -v openssl >/dev/null 2>&1 || { echo -e "\e[1;33m[+] Bootstrapping core decryptor...\e[0m"; pkg update -y > /dev/null 2>&1 && pkg install -y openssl-tool > /dev/null 2>&1; }
+
 echo -e "\e[1;33m[+] Installing MASTERS SYSTEM M@☆ ...\e[0m"
 
 _tmp=$(mktemp)
