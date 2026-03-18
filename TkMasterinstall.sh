@@ -1,11 +1,11 @@
-#!/bin/bash # Tk Master Baby Aight 🌬💙💨
+#!/bin/bash # Tk Master Baby Aight 🌬💙💨 @MastersTechSolutions IT'S ALL LOVE❤️OTF❤️
 clear
 echo -e "\e[1;34m===========================================\e[0m"
 echo -e "\e[1;36m     MASTERS M@☆ SYSTEM INSTALLER          \e[0m"
 echo -e "\e[1;36m     SECURED BY [MSPY] ENGINE              \e[0m"
 echo -e "\e[1;34m===========================================\e[0m"
 echo ""
-echo -e "\e[1;33m[+] Unpacking encrypted payload...\e[0m"
+echo -e "\e[1;33m[+] Installing MASTERS SYSTEM M@☆ ...\e[0m"
 
 _tmp=$(mktemp)
 
@@ -18,7 +18,7 @@ if grep -q "Initializing" "$_tmp"; then
     bash "$_tmp"
     rm -f "$_tmp"
 else
-    echo -e "\e[1;91m[!] INSTALLATION ERROR: CORRUPT PAYLOAD.\e[0m"
+    echo -e "\e[1;91m[!] INSTALLATION ERROR: DATA NOT FOUND.\e[0m"
     rm -f "$_tmp"
     exit 1
 fi
